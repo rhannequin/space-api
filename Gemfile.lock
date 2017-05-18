@@ -163,7 +163,6 @@ DEPENDENCIES
   puma (~> 3.7)
   rails (~> 5.1.1)
   rspec-rails
-  simplecov
   spring
   spring-watcher-listen (~> 2.0.0)
   sqlite3
