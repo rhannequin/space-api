@@ -14,7 +14,7 @@
     }
   },
   "host":"",
-  "basePath":"/",
+  "basePath":"/v1/",
   "schemes":[
     "http"
   ],

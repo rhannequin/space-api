@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe RootController, type: :controller do
+RSpec.describe V1::RootController, type: :controller do
   describe 'GET #index' do
     it 'returns a successful response' do
       get :index
