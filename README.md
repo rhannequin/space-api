@@ -3,3 +3,30 @@
 [![Code Climate](https://codeclimate.com/github/rhannequin/space-api/badges/gpa.svg)](https://codeclimate.com/github/rhannequin/space-api)
 
 # Space API
+
+## Requirements
+
+- [RVM](https://rvm.io)
+- [Ruby](https://www.ruby-lang.org) 2.4.1
+- [Bundler](http://bundler.io)
+- [Rails](http://rubyonrails.org) 5.1.1
+
+## Installation
+
+```sh
+$ bundle install
+```
+
+## Launch
+
+```sh
+$ bundle exec rails server
+```
+
+Launches app server on [http://127.0.0.1:3000](http://127.0.0.1:3000).
+
+## Test
+
+```sh
+$ bundle exec rspec
+```
