@@ -1,1 +1,1 @@
-json.array! @stars, :name
+json.array! @stars, :name, :mass
