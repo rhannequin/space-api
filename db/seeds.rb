@@ -1,11 +1,16 @@
 # Emptying database
 
+PlanetarySystem.destroy_all
 Star.destroy_all
+
+# Planetary systems
+
+solar_system = PlanetarySystem.create(name: 'Solar System')
 
 # Stars
 
 Star.create([
-  { name: 'Sun', mass: 1.989 * 10**30 },
+  { name: 'Sun', mass: 1.989 * 10**30, planetary_system: solar_system },
   { name: 'Sirius A', mass: 4.018 * 10**30 },
   { name: 'Canopus', mass: 1.949 * 10**31 },
   { name: 'Rigil Kentaurus', mass: 2.188 * 10**30 },

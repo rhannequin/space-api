@@ -14,7 +14,7 @@ test:
   DB_PORT: "5432"
   SECRET_KEY_BASE: abc123
 
-test:
+production:
   DB_HOST: localhost
   DB_DATABASE: database
   DB_USERNAME: user
