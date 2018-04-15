@@ -7,9 +7,9 @@
 ## Requirements
 
 - [RVM](https://rvm.io)
-- [Ruby](https://www.ruby-lang.org) 2.4.1
+- [Ruby](https://www.ruby-lang.org) 2.5.1
 - [Bundler](http://bundler.io)
-- [Rails](http://rubyonrails.org) 5.1.1
+- [Rails](http://rubyonrails.org) 5.1.6
 - [PostgreSQL](https://www.postgresql.org)
 
 ## Installation
