@@ -2,27 +2,17 @@ postgresql: &postgresql
   adapter: postgresql
   encoding: unicode
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  host: <%= Rails.application.credentials.fetch(Rails.env.to_sym).fetch(:db_host) %>
+  database: <%= Rails.application.credentials.fetch(Rails.env.to_sym).fetch(:db_database) %>
+  username: <%= Rails.application.credentials.fetch(Rails.env.to_sym).fetch(:db_username) %>
+  password: <%= Rails.application.credentials.fetch(Rails.env.to_sym).fetch(:db_password) %>
+  port: <%= Rails.application.credentials.fetch(Rails.env.to_sym).fetch(:db_port) %>
 
 development:
   <<: *postgresql
-  host: <%= ENV['DB_HOST'] %>
-  database: <%= ENV['DB_DATABASE'] %>
-  username: <%= ENV['DB_USERNAME'] %>
-  password: <%= ENV['DB_PASSWORD'] %>
-  port: <%= ENV['DB_PORT'] %>
 
 test:
   <<: *postgresql
-  host: <%= ENV['DB_HOST'] %>
-  database: <%= ENV['DB_DATABASE'] %>
-  username: <%= ENV['DB_USERNAME'] %>
-  password: <%= ENV['DB_PASSWORD'] %>
-  port: <%= ENV['DB_PORT'] %>
 
 production:
   <<: *postgresql
-  host: <%= ENV['DB_HOST'] %>
-  database: <%= ENV['DB_DATABASE'] %>
-  username: <%= ENV['DB_USERNAME'] %>
-  password: <%= ENV['DB_PASSWORD'] %>
-  port: <%= ENV['DB_PORT'] %>

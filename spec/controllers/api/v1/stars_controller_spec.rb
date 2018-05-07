@@ -1,9 +1,9 @@
 require 'rails_helper'
 
-RSpec.describe V1::PlanetarySystemsController, type: :controller do
+RSpec.describe Api::V1::StarsController, type: :controller do
   describe 'GET #index' do
     before do
-      PlanetarySystem.create!(name: 'Solar System')
+      Star.create!(name: 'Sun', mass: 10)
       get :index, format: :json
     end
 
@@ -14,9 +14,10 @@ RSpec.describe V1::PlanetarySystemsController, type: :controller do
 
     it 'contains stars records' do
       json = response.body
-      planetary_system = parse_json(json).first
+      star = parse_json(json).first
       expect(json).to have_json_size(1)
-      expect(planetary_system['name']).to eq('Solar System')
+      expect(star['name']).to eq('Sun')
+      expect(star['mass']).to eq(10)
     end
   end
 end

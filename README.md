@@ -9,7 +9,7 @@
 - [RVM](https://rvm.io)
 - [Ruby](https://www.ruby-lang.org) 2.5.1
 - [Bundler](http://bundler.io)
-- [Rails](http://rubyonrails.org) 5.1.6
+- [Rails](http://rubyonrails.org) 5.2.0
 - [PostgreSQL](https://www.postgresql.org)
 
 ## Installation
@@ -19,15 +19,9 @@ $ gem install bundler
 $ bundle install
 ```
 
-Copy the environment variables example file :
-
-```sh
-$ cp config/application.example.yml config/application.yml
-```
-
 ### Database
 
-Update settings from `config/application.yml` and `config/database.yml`.
+Update settings from `config/database.yml`.
 
 Then create and migrate database :
 
