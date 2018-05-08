@@ -16,6 +16,7 @@
   "host":"",
   "basePath":"/api/v1/",
   "schemes":[
+    "https",
     "http"
   ],
   "paths":{
