@@ -14,7 +14,7 @@
     }
   },
   "host":"",
-  "basePath":"/v1/",
+  "basePath":"/api/v1/",
   "schemes":[
     "http"
   ],
@@ -22,6 +22,34 @@
     "/":{
       "get":{
         "summary":"Root endpoint",
+        "operationId":"root",
+        "produces":[
+          "application/json"
+        ],
+        "responses":{
+          "200":{
+            "description":"successful operation"
+          }
+        }
+      }
+    },
+    "/stars":{
+      "get":{
+        "summary":"Stars endpoint",
+        "operationId":"stars",
+        "produces":[
+          "application/json"
+        ],
+        "responses":{
+          "200":{
+            "description":"successful operation"
+          }
+        }
+      }
+    },
+    "/planetary_systems":{
+      "get":{
+        "summary":"Planetary systems endpoint",
         "operationId":"root",
         "produces":[
           "application/json"
