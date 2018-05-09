@@ -1,10 +1,15 @@
 Rails.application.routes.draw do
   root 'home#index'
+
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
-      get '/', to: 'root#index'
+      root to: 'root#index'
       resources :stars, only: :index
       resources :planetary_systems, only: :index
     end
+  end
+
+  namespace :admin do
+    root 'home#index'
   end
 end
