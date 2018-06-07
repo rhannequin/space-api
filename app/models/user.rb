@@ -1,4 +1,8 @@
 class User < ApplicationRecord
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable and :omniauthable, :rememberable, :trackable
+  devise :database_authenticatable, :registerable, :recoverable, :validatable
+
   has_many :access_grants, class_name: "Doorkeeper::AccessGrant",
                            foreign_key: :resource_owner_id,
                            dependent: :destroy
