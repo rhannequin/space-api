@@ -2,8 +2,11 @@ require 'rails_helper'
 
 RSpec.describe Api::V1::StarsController, type: :controller do
   describe 'GET #index' do
+    let(:token) { double :acceptable? => true }
+
     before do
       Star.create!(name: 'Sun', mass: 10)
+      controller.stub(:doorkeeper_token) { token }
       get :index, format: :json
     end
 
