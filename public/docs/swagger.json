@@ -26,7 +26,7 @@
       "authorizationUrl":"http://localhost:3000/oauth/authorize",
       "flow":"implicit",
       "scopes":{
-        "planets:read":"Read planets"
+        "stars:read":"Read stars"
       }
     }
   },
@@ -60,7 +60,7 @@
         "security":[
           {
             "oauth2":[
-              "planets:read"
+              "stars:read"
             ]
           }
         ]
