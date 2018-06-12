@@ -15,6 +15,20 @@ ActiveRecord::Schema.define(version: 2018_06_07_094953) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "api_calls", force: :cascade do |t|
+    t.string "endpoint"
+    t.string "controller"
+    t.string "action"
+    t.string "method"
+    t.string "format"
+    t.integer "status"
+    t.float "duration"
+    t.float "db_runtime"
+    t.float "view_runtime"
+    t.datetime "created_at", null: false
+    t.index ["endpoint"], name: "index_api_calls_on_endpoint"
+  end
+
   create_table "oauth_access_grants", force: :cascade do |t|
     t.integer "resource_owner_id", null: false
     t.bigint "application_id", null: false
