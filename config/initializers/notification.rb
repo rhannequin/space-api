@@ -2,11 +2,12 @@ ActiveSupport::Notifications.subscribe "process_action.action_controller" do |*a
   event = ActiveSupport::Notifications::Event.new(*args)
   format = event.payload[:format].to_s || "all"
   format = "all" if format == "*/*"
+  controller = event.payload[:controller]
 
   if controller.starts_with?("Api::V")
     api_call = ApiCall.create(
       endpoint: event.payload[:path],
-      controller: event.payload[:controller],
+      controller: controller,
       action: event.payload[:action],
       method: event.payload[:method].to_s.downcase,
       format: format,
