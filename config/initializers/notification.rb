@@ -2,26 +2,18 @@ ActiveSupport::Notifications.subscribe "process_action.action_controller" do |*a
   event = ActiveSupport::Notifications::Event.new(*args)
   format = event.payload[:format].to_s || "all"
   format = "all" if format == "*/*"
-  controller = event.payload[:controller]
-  action = event.payload[:action]
-  path = event.payload[:path]
-  request_method = event.payload[:method].to_s.downcase
-  status = event.payload[:status]
-  duration = event.duration.round(4)
-  db_runtime = event.payload[:db_runtime].round(4) || 0
-  view_runtime = event.payload[:view_runtime].round(4) || 0
 
   if controller.starts_with?("Api::V")
     api_call = ApiCall.create(
-      endpoint: path,
-      controller: controller,
-      action: action,
-      method: request_method,
+      endpoint: event.payload[:path],
+      controller: event.payload[:controller],
+      action: event.payload[:action],
+      method: event.payload[:method].to_s.downcase,
       format: format,
-      status: status,
-      duration: duration,
-      db_runtime: db_runtime,
-      view_runtime: view_runtime
+      status: event.payload[:status],
+      duration: event.duration.round(4),
+      db_runtime: event.payload[:db_runtime] ? event.payload[:db_runtime].round(4) : 0,
+      view_runtime: event.payload[:view_runtime] ? event.payload[:view_runtime].round(4) : 0
     )
   end
   # Rails.logger.debug "Headers #{event.payload[:headers].to_h.keys.grep /\A[A-Za-z0-9-]+\z/}"
