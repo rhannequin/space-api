@@ -8,7 +8,7 @@ RSpec.describe Api::V1::PlanetarySystemsController, type: :controller do
     end
 
     it 'returns a successful response' do
-      expect(response).to be_success
+      expect(response).to be_successful
       expect(response).to have_http_status(200)
     end
 
