@@ -11,6 +11,7 @@ gem 'coffee-rails'
 gem 'jbuilder'
 gem 'devise'
 gem 'doorkeeper'
+gem 'activerecord-import', require: false
 
 # gem 'turbolinks', '~> 5'
 # Use Redis adapter to run Action Cable in production

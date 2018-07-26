@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_07_094953) do
+ActiveRecord::Schema.define(version: 2018_07_23_203938) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -81,6 +81,10 @@ ActiveRecord::Schema.define(version: 2018_06_07_094953) do
     t.datetime "updated_at", null: false
     t.decimal "mass"
     t.bigint "planetary_system_id"
+    t.decimal "apparent_magnitude", precision: 4, scale: 2
+    t.decimal "absolute_magnitude", precision: 6, scale: 3
+    t.decimal "right_ascension", precision: 9, scale: 6
+    t.decimal "declination", precision: 10, scale: 6
     t.index ["planetary_system_id"], name: "index_stars_on_planetary_system_id"
   end
 
