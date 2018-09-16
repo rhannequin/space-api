@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_07_094953) do
+ActiveRecord::Schema.define(version: 2018_09_16_154842) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -75,6 +75,21 @@ ActiveRecord::Schema.define(version: 2018_06_07_094953) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "planets", force: :cascade do |t|
+    t.string "name"
+    t.decimal "radius"
+    t.decimal "mass"
+    t.decimal "volume"
+    t.decimal "sideral_rotation_period"
+    t.decimal "mean_solar_day"
+    t.integer "core_radius"
+    t.decimal "geometric_albedo"
+    t.integer "mean_temperature"
+    t.decimal "obliquity_to_orbit"
+    t.bigint "planetary_system_id"
+    t.index ["planetary_system_id"], name: "index_planets_on_planetary_system_id"
+  end
+
   create_table "stars", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -103,5 +118,6 @@ ActiveRecord::Schema.define(version: 2018_06_07_094953) do
 
   add_foreign_key "oauth_access_grants", "oauth_applications", column: "application_id"
   add_foreign_key "oauth_access_tokens", "oauth_applications", column: "application_id"
+  add_foreign_key "planets", "planetary_systems"
   add_foreign_key "stars", "planetary_systems"
 end

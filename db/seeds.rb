@@ -25,3 +25,21 @@ Star.create([
   { name: 'Hadar Aa', mass: 2.391 * 10**31 },
   { name: 'Altair', mass: 3.56 * 10**30 }
 ])
+
+# Planets
+
+Planet.create[
+  {
+    name: "Mars",
+    radius: 3389.92,
+    mass: 6.4171 * 10**23,
+    volume: 16.318 * 10**10,
+    sideral_rotation_period: 24.622962,
+    mean_solar_day: 88775.24415,
+    core_radius: 1700,
+    geometric_albedo: 0.150,
+    mean_temperature: 210,
+    obliquity_to_orbit: 25.19,
+    planetary_system: solar_system
+  }
+]
