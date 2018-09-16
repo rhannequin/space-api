@@ -12,20 +12,38 @@ namespace :import do
 
     filename = File.join(Rails.root, 'db', 'seeds', 'hygdata_v3.csv')
 
-    stars = []
-    CSV.open(filename, headers: true, converters: :numeric).first(500).each do |row|
+    # stars = []
+    before = []
+    after = []
+    CSV.open(filename, headers: true, converters: :numeric).first(35000).each do |row|
       data = row.to_hash
-      stars << Star.new(
-        apparent_magnitude: data['mag'],
-        absolute_magnitude: data['absmag'],
-        right_ascension: data['ra'],
-        declination: data['dec']
-      )
+      puts "#{data['proper']} : #{data['ra']} / #{data['dec']} => #{decimal_degrees_to_dms(data['ra'])} / #{decimal_degrees_to_dms(data['dec'])}" unless data['proper'].nil?
+      # before << data['lum'].to_s.split('.').first.size
+      # after << data['lum'].to_s.split('.').last.size
+      # stars << Star.new(
+      #   apparent_magnitude: data['mag'],
+      #   absolute_magnitude: data['absmag'],
+      #   luminosity: data['lum'],
+      #   right_ascension: data['ra'],
+      #   declination: data['dec'],
+      #   declination: data['rv']
+      # )
     end
-    Star.import(stars)
+    # puts before.max
+    # puts after.max
+    # Star.import(stars)
 
     end_time = Time.zone.now
     time_spend = (end_time - start_time).to_i
     log.info "Executed in: #{time_spend} #{'second'.pluralize(time_spend)}."
   end
 end
+
+def decimal_degrees_to_dms(decimal_degrees)
+  d = decimal_degrees.to_s.split('.').first.to_i
+  mm = "0.#{decimal_degrees.to_s.split('.').last.to_i}".to_f * 60
+  m = mm.to_s.split('.').first
+  s = "0.#{mm.to_s.split('.').last.to_i}".to_f * 60
+  "#{d}° #{m}' #{s}''"
+end
+
