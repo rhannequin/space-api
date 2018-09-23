@@ -1,50 +1,44 @@
 require "rails_helper"
 
+ATTS = {
+  name: "Mars",
+  radius: 1,
+  mass: 2.2,
+  volume: 3.3,
+  sideral_rotation_period: 4.4,
+  mean_solar_day: 5.5,
+  core_radius: 6,
+  geometric_albedo: 7.7,
+  mean_temperature: 8,
+  obliquity_to_orbit: 9.9,
+  mean_sideral_orbit: 10.10,
+  flattening: 11.11,
+  semi_major_axis: 12.12,
+  sideral_rotation_rate: 13.13,
+  polar_gravity: 14.14,
+  equatorial_gravity: 15.15,
+  mass_ration: 16.16,
+  mass_of_atmosphere: 17,
+  atmosphere_pressure: 18.18,
+  maximal_angular_diameter: 19.19,
+  visual_magnitude: -20.20,
+  orbital_speed: 21.21,
+  escape_speed: 22.22,
+  mean_solar_constant: 23,
+  solar_constant_at_perihelion: 24,
+  solar_constant_at_aphelion: 25
+}
+
 RSpec.describe Planet, type: :model do
-  before do
-    Planet.create(name: "Mars", mass: 1, radius: 2.2, volume: 3.3, sideral_rotation_period: 4.4, mean_solar_day: 5.5,
-      core_radius: 6, geometric_albedo: 7.7, mean_temperature: 8, obliquity_to_orbit: 9.9)
-  end
-
   describe "Attributes" do
-    it "has a string attribute #name" do
-      expect(Planet.last.name).to eq("Mars")
+    before do
+      Planet.create(ATTS)
     end
 
-    it "has an integer attribute #mass" do
-      expect(Planet.last.mass).to eq(1)
-    end
-
-    it "has an decimal attribute #radius" do
-      expect(Planet.last.radius).to eq(2.2)
-    end
-
-    it "has an decimal attribute #volume" do
-      expect(Planet.last.volume).to eq(3.3)
-    end
-
-    it "has an decimal attribute #sideral_rotation_period" do
-      expect(Planet.last.sideral_rotation_period).to eq(4.4)
-    end
-
-    it "has an decimal attribute #mean_solar_day" do
-      expect(Planet.last.mean_solar_day).to eq(5.5)
-    end
-
-    it "has an integer attribute #core_radius" do
-      expect(Planet.last.core_radius).to eq(6)
-    end
-
-    it "has an decimal attribute #geometric_albedo" do
-      expect(Planet.last.geometric_albedo).to eq(7.7)
-    end
-
-    it "has an integer attribute #mean_temperature" do
-      expect(Planet.last.mean_temperature).to eq(8)
-    end
-
-    it "has an decimal attribute #obliquity_to_orbit" do
-      expect(Planet.last.obliquity_to_orbit).to eq(9.9)
+    ATTS.each do |k, v|
+      it "has a #{v.class} attribute ##{k.to_s}" do
+        expect(Planet.last.send(k)).to eq(v)
+      end
     end
   end
 end
