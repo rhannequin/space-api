@@ -1,7 +1,7 @@
 require "rails_helper"
 
 RSpec.describe IssRequest, type: :model do
-  let(:iss_params) { { start_date: Time.zone.now, latitude: 0.0, longitude: 0.0 } }
+  let(:iss_params) { { start_date: Time.zone.now, latitude: 0.0, longitude: 0.0, elevation: 0 } }
   let(:iss) { IssRequest.new(iss_params) }
 
   describe "Attributes" do
@@ -28,7 +28,7 @@ RSpec.describe IssRequest, type: :model do
     end
 
     describe "Numeric attributes" do
-      %i[latitude longitude].each do |att|
+      %i[latitude longitude elevation].each do |att|
         it "##{att} attribute is numeric" do
           ["NaN", true, [], {}].each do |not_a_number|
             expect(IssRequest.new(iss_params.merge(att => not_a_number))).not_to be_valid
@@ -46,6 +46,16 @@ RSpec.describe IssRequest, type: :model do
         expect(IssRequest.new(iss_params.merge(longitude: -185))).not_to be_valid
         expect(IssRequest.new(iss_params.merge(longitude: 95))).to be_valid
         expect(IssRequest.new(iss_params.merge(longitude: 185))).not_to be_valid
+      end
+
+      it "#elevation is a positive integer" do
+        expect(IssRequest.new(iss_params.merge(elevation: -1))).not_to be_valid
+        expect(IssRequest.new(iss_params.merge(elevation: 1))).to be_valid
+        expect(IssRequest.new(iss_params.merge(elevation: 1.1))).not_to be_valid
+      end
+
+      it "#elevation is not required" do
+        expect(IssRequest.new(iss_params.merge(elevation: nil))).to be_valid
       end
     end
   end

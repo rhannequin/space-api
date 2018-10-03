@@ -3,7 +3,7 @@ require "rails_helper"
 RSpec.describe Api::V1::IssController, type: :controller do
   describe "GET #index" do
     before do
-      get :index, format: :json, params: { longitude: 0, latitude: 0 }
+      get :index, format: :json, params: { longitude: 0, latitude: 0, elevation: 0 }
     end
 
     it "returns a successful response" do
