@@ -11,7 +11,7 @@ module Api
       private
 
         def iss_request_parameters
-          params.permit(:latitude, :longitude, :elevation)
+          params.permit(:latitude, :longitude, :elevation, :pressure, :horizon)
         end
     end
   end
