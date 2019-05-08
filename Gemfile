@@ -10,7 +10,6 @@ gem 'mini_racer', platforms: :ruby
 gem 'coffee-rails'
 gem 'jbuilder'
 gem 'devise'
-gem 'doorkeeper'
 
 # gem 'turbolinks', '~> 5'
 # Use Redis adapter to run Action Cable in production

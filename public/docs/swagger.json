@@ -19,17 +19,6 @@
     "https",
     "http"
   ],
-  "securityDefinitions":{
-    "oauth2":{
-      "type":"oauth2",
-      "description":"This API uses OAuth 2 with implicit grant flow",
-      "authorizationUrl":"http://localhost:3000/oauth/authorize",
-      "flow":"implicit",
-      "scopes":{
-        "stars:read":"Read stars"
-      }
-    }
-  },
   "paths":{
     "/":{
       "get":{
@@ -56,14 +45,7 @@
           "200":{
             "description":"successful operation"
           }
-        },
-        "security":[
-          {
-            "oauth2":[
-              "stars:read"
-            ]
-          }
-        ]
+        }
       }
     },
     "/planetary_systems":{
