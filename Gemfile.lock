@@ -99,9 +99,6 @@ GEM
       activesupport (>= 4.2.0)
     i18n (1.6.0)
       concurrent-ruby (~> 1.0)
-    jbuilder (2.8.0)
-      activesupport (>= 4.2.0)
-      multi_json (>= 1.2)
     json (2.2.0)
     json_spec (1.1.5)
       multi_json (~> 1.0)
@@ -263,7 +260,6 @@ DEPENDENCIES
   coveralls
   database_cleaner
   devise
-  jbuilder
   json_spec
   listen
   mini_racer
