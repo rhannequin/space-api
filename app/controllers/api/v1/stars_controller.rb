@@ -3,6 +3,8 @@ module Api
     class StarsController < ApiController
       def index
         @stars = Star.all
+
+        render json: @stars
       end
     end
   end

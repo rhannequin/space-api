@@ -3,6 +3,8 @@ module Api
     class PlanetarySystemsController < ApplicationController
       def index
         @planetary_systems = PlanetarySystem.all
+
+        render json: @planetary_systems
       end
     end
   end
